@@ -9,6 +9,20 @@ import DefaultScreen from "./src/screens/DefaultScreen";
 import SearchScreen from "./src/screens/SearchScreen";
 import LocateScreen from "./src/screens/LocateScreen";
 
+/* const firebaseConfig = {
+  apiKey: "AIzaSyDu7rZiXHVowDwwkKl8uE3tJlr_bSC-hNg",
+  authDomain: "womens-app.firebaseapp.com",
+  projectId: "womens-app",
+  storageBucket: "womens-app.appspot.com",
+  messagingSenderId: "373808914725",
+  appId: "1:373808914725:web:59d0e80dfb6807cafdbacc",
+  measurementId: "G-V91ZXWK31Q",
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+ */
 const Stack = createStackNavigator();
 
 const globalScreenOptions = {

@@ -3,12 +3,19 @@ import { View, StyleSheet } from "react-native";
 import { Input, Button, Text } from "react-native-elements";
 import { set } from "react-native-reanimated";
 import { auth } from "../../firebase";
+import { userCred } from "../../firebase";
 
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+
+  const [credentials, setCredentials] = useState({
+    name: "",
+    number: "",
+    email: "",
+  });
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -38,19 +45,28 @@ const RegisterScreen = ({ navigation }) => {
           autoFocus
           type="text"
           value={name}
-          onChangeText={(text) => setName(text)}
+          onChangeText={(text) => {
+            setCredentials({ ...credentials, name: text });
+            setName(text);
+          }}
         />
         <Input
           placeholder="Email"
           type="email"
           value={email}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={(text) => {
+            setCredentials({ ...credentials, email: text });
+            setEmail(text);
+          }}
         />
         <Input
           placeholder="Phone Number"
           type="text"
           value={phone}
-          onChangeText={(text) => setPhone(text)}
+          onChangeText={(text) => {
+            setCredentials({ ...credentials, number: text });
+            setPhone(text);
+          }}
         />
         <Input
           placeholder="Password"
@@ -65,7 +81,10 @@ const RegisterScreen = ({ navigation }) => {
         raised
         containerStyle={styles.button}
         title="Register"
-        onPress={register}
+        onPress={() => {
+          register();
+          userCred(credentials);
+        }}
       />
     </View>
   );
