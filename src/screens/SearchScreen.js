@@ -45,13 +45,13 @@ const styles = StyleSheet.create({
   },
   txt: {
     color: "#b80646",
-    fontSize: 25,
+    fontSize: 20,
     padding: "10%",
     backgroundColor: "transparent",
   },
   txt2: {
     color: "#b80646",
-    fontSize: 25,
+    fontSize: 20,
     padding: "8%",
   },
   View: {

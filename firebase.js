@@ -2,6 +2,10 @@ import * as firebase from "firebase";
 import "firebase/firestore";
 import "firebase/auth";
 
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs(["Setting a timer"]);
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDu7rZiXHVowDwwkKl8uE3tJlr_bSC-hNg",
@@ -13,15 +17,38 @@ const firebaseConfig = {
   measurementId: "G-V91ZXWK31Q",
 };
 
-let app;
+/* let firebaseApp; */
 
-if (firebase.apps.length === 0) {
-  app = firebase.initializeApp(firebaseConfig);
+let something;
+
+if (!firebase.apps.length) {
+  something = firebase.initializeApp(firebaseConfig);
 } else {
-  app = firebase.app();
+  something = firebase.app();
 }
 
-const db = app.firestore();
+/* let firebaseApp;
+if (!getApps().length) {
+  firebaseApp = initializeApp(config);
+} else {
+  firebaseApp = getApp();
+} */
+
+/* if (!firebase.apps.length) {
+  firebase.initializeApp({});
+} else {
+  firebase.app(); // if already initialized, use that one
+} */
+
+/* const db = something.firestore(); */
+const db = something.database();
+
+export const userCred = (cred) => {
+  const userID = firebase.auth().currentUser.uid;
+  db.ref("users/" + userID)
+    .set(cred)
+    .then(() => console.log(cred));
+};
 
 const auth = firebase.auth();
 

@@ -11,6 +11,8 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import { auth } from "../../firebase";
 import ButtonA from "../components/ButtonA";
+import * as firebase from "firebase";
+import { Permissions, Notifications } from "expo";
 
 const DefaultScreen = ({ navigation }) => {
   const signOutUser = () => {
@@ -18,6 +20,20 @@ const DefaultScreen = ({ navigation }) => {
       navigation.replace("Login");
     });
   };
+
+  const userID = firebase.auth().currentUser.uid;
+  console.log(userID);
+  console.log(firebase.auth().currentUser.email);
+  console.log(firebase.auth().currentUser.displayName);
+  console.log(firebase.auth().currentUser.name);
+
+  firebase
+    .database()
+    .ref("users/" + userID)
+    .set({
+      Name: firebase.auth().currentUser.displayName,
+      email: firebase.auth().currentUser.email,
+    });
 
   return (
     <ScrollView>

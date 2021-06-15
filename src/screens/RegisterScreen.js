@@ -62,11 +62,12 @@ const RegisterScreen = ({ navigation }) => {
         <Input
           placeholder="Phone Number"
           type="text"
-          value={phone}
+          value={phoneNumber}
           onChangeText={(text) => {
             setCredentials({ ...credentials, number: text });
             setPhone(text);
           }}
+          onSubmitEditing={register}
         />
         <Input
           placeholder="Password"
