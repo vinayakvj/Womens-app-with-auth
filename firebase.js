@@ -43,7 +43,7 @@ if (!getApps().length) {
 /* const db = something.firestore(); */
 const db = something.database();
 
-export const userCred = (cred) => {
+const userCred = (cred) => {
   const userID = firebase.auth().currentUser.uid;
   db.ref("users/" + userID)
     .set(cred)

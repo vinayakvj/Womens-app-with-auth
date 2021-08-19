@@ -62,7 +62,7 @@ const RegisterScreen = ({ navigation }) => {
         <Input
           placeholder="Phone Number"
           type="text"
-          value={phoneNumber}
+          value={phone}
           onChangeText={(text) => {
             setCredentials({ ...credentials, number: text });
             setPhone(text);

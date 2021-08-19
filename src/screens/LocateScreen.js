@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import Call from "../components/Call";
+/* import Map from "../components/Tracker"; */
 
 const LocateScreen = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={require("../img/pinkpal.png")} />
-      {/* <Map />
-      {errorMsg ? <Text>Please enable location services</Text> : null} */}
+      {/* <Map /> */}
       <Text style={styles.txt}>
         Your location has been tracked by the police and nearest volunteers.
         Help is on the way
